@@ -1,0 +1,23 @@
+{
+  "name": "qa-practice-with-cypress-basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "npx cypress open",
+    "cy:chrome:headed": "npx cypress run --browser chrome --headed",
+    "cy:chrome:headless": "npx cypress run --browser chrome",
+    "cy:firefox:headed": "npx cypress run --browser firefox --headed",
+    "cy:cloud": "npx cypress run browser chrome --record --key 0a3f0d87-2b24-4f5a-859c-d9700fa09206"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.0",
+    "@testing-library/cypress": "^9.0.0",
+    "cypress": "^12.13.0",
+    "cypress-iframe": "^1.0.1"
+  }
+}
