@@ -12,7 +12,7 @@ class CheckOutPage{
   }
 
   getSelectCountry(countryName){
-    return cy.get("#select2-billing_country-container").select(countryName);
+    return cy.get("#billing_country").select(countryName);
   }
 
   getStreetAddress(){
