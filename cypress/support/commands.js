@@ -32,7 +32,7 @@ CheckOutPage.getSelectState().select(county, { force: true }, { delay: 0 });
 
 
 const randomZipCode = faker.location.zipCode()
-CheckOutPage.getZipCode(randomZipCode, { delay: 0 });
+CheckOutPage.getZipCode().type(randomZipCode, { delay: 0 });
 
 const randomPhoneNumber = faker.phone.number("+40 74 ### ## ##")
 CheckOutPage.getPhone().type(randomPhoneNumber, { delay: 0 });
