@@ -1,5 +1,5 @@
 class CartPage{
-getProceedToCartBtn(){
+  getProceedToCheckoutBtn(){
   return cy.get('a[href="http://ecommerce.test.k6.io/checkout/"]').contains("Proceed to checkout");
 }
 }

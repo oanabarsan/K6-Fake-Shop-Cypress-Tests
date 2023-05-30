@@ -11,8 +11,9 @@ class CheckOutPage{
    return cy.get("#billing_company");
   }
 
-  getSelectCountry(countryName){
-    return cy.get("#billing_country").select(countryName);
+
+  getSelectCountry(){
+    return cy.get("#billing_country_field select");
   }
 
   getStreetAddress(){
@@ -27,8 +28,8 @@ class CheckOutPage{
     return cy.get("#billing_city");
   }
 
-  getSelectState(stateName){
-    return cy.get("#select2-billing_state-container").select(stateName);
+  getSelectState(){
+    return cy.get("#billing_state_field select");
   }
 
   getZipCode(){
