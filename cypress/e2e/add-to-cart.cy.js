@@ -16,7 +16,7 @@ describe("Add to cart test suite", () => {
     cy.wait("@addProductAPI").its("response.statusCode").should("eq", 200);
     ShopPage.getViewCartBtn().click();
     CartPage.getProceedToCheckoutBtn().click();
-    cy.checkoutInformation();
+    cy.checkoutForm();
     cy.intercept({
       method: "POST",
       url: "http://ecommerce.test.k6.io/?wc-ajax=checkout",

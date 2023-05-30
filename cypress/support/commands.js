@@ -1,10 +1,7 @@
 import { faker } from "@faker-js/faker";
-import ShopPage from "../pages/ShopPage";
-import HomePage from "../pages/HomePage";
 import CheckOutPage from "../pages/CheckOutPage";
-import CartPage from "../pages/CartPage";
 
-Cypress.Commands.add("checkoutInformation", ()=>{
+Cypress.Commands.add("checkoutForm", ()=>{
 
 const randomFirstName = faker.person.firstName();
 CheckOutPage.getFirstName().type(randomFirstName, { delay: 0 });
