@@ -6,11 +6,18 @@ import RegisterPage from "../pages/RegisterPage";
 import EditPswAndAccountDetailsPage from "../pages/EditPswAndAccountDetailsPage.js";
 import AccountDetailsPage from "../pages/AccountDetailsPage";
 
+let randomEmail = faker.internet.email();
+let existingEmail = randomEmail;
+let randomFirstName = faker.person.firstName();
+let randomLastName = faker.person.lastName();
+let randomEmailAddress = faker.internet.exampleEmail({
+  firstName: randomFirstName,
+  lastName: randomLastName,
+});
+let currentPassword = faker.internet.password();
+let updatedPassword = faker.internet.password();
+
 describe("User register test suite", () => {
-  let randomEmail = faker.internet.email();
-
-  let existingEmail = randomEmail;
-
   it("Register with valid creds", () => {
     RegisterPage.getEmail().type(randomEmail, { delay: 0 });
     RegisterPage.getRegisterBtn().click();
@@ -27,16 +34,7 @@ describe("User register test suite", () => {
     ).should("be.visible");
   });
 
-  it("Update password test", () => {
-    let randomFirstName = faker.person.firstName();
-    let randomLastName = faker.person.lastName();
-    let randomEmailAddress = faker.internet.exampleEmail({
-      firstName: randomFirstName,
-      lastName: randomLastName,
-    });
-    let currentPassword = faker.internet.password();
-    let updatedPassword = faker.internet.password();
-
+  it("Try to update password test", () => {
     RegisterPage.getEmail().type(randomEmailAddress, { delay: 0 });
     RegisterPage.getRegisterBtn().click();
     cy.contains(
