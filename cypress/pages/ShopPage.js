@@ -1,4 +1,8 @@
 class ShopPage{
+getFirstProduct(){
+  return cy.get('a[href="?add-to-cart=24"][data-product_id="24"]').contains("Add to cart");
+}
+
 getAddProduct(){
   return cy.get('a[href="?add-to-cart=16"][data-product_id="16"]').contains("Add to cart");
 }

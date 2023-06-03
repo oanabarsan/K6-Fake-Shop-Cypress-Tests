@@ -30,6 +30,7 @@ class AccountDetailsPage{
  getSaveChanges(){
   return cy.get('button').contains('Save changes');
  }
+
 }
 
 export default new AccountDetailsPage();
