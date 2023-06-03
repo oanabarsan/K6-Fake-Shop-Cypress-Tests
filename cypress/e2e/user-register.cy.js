@@ -2,7 +2,7 @@
 
 import { faker } from "@faker-js/faker";
 
-import RegisterPage from "../pages/RegisterPage";
+import MyAccountPage from "../pages/MyAccountPage";
 import EditPswAndAccountDetailsPage from "../pages/EditPswAndAccountDetailsPage.js";
 import AccountDetailsPage from "../pages/AccountDetailsPage";
 
@@ -17,26 +17,26 @@ let randomEmailAddress = faker.internet.exampleEmail({
 let currentPassword = faker.internet.password();
 let updatedPassword = faker.internet.password();
 
-describe("User register test suite", () => {
+describe("User auth test suite", () => {
   it("Register with valid creds", () => {
-    RegisterPage.getEmail().type(randomEmail, { delay: 0 });
-    RegisterPage.getRegisterBtn().click();
+    MyAccountPage.getEmail().type(randomEmail, { delay: 0 });
+    MyAccountPage.getRegisterBtn().click();
     cy.contains(
       `From your account dashboard you can view your recent orders,`
     ).should("be.visible");
   });
 
   it("Try to register with existing email", () => {
-    RegisterPage.getEmail().type(existingEmail, { delay: 0 });
-    RegisterPage.getRegisterBtn().click();
+    MyAccountPage.getEmail().type(existingEmail, { delay: 0 });
+    MyAccountPage.getRegisterBtn().click();
     cy.contains(
       `Error: An account is already registered with your email address. Please log in.`
     ).should("be.visible");
   });
 
   it("Try to update password test", () => {
-    RegisterPage.getEmail().type(randomEmailAddress, { delay: 0 });
-    RegisterPage.getRegisterBtn().click();
+    MyAccountPage.getEmail().type(randomEmailAddress, { delay: 0 });
+    MyAccountPage.getRegisterBtn().click();
     cy.contains(
       `From your account dashboard you can view your recent orders,`
     ).should("be.visible");
@@ -51,5 +51,13 @@ describe("User register test suite", () => {
     cy.get("ul.woocommerce-error")
       .contains("Your current password is incorrect.")
       .should("be.visible");
+  });
+
+  it("Try to login test", () => {
+   MyAccountPage.getLoginUserName().type(existingEmail);
+   MyAccountPage.getLoginPassword().type(currentPassword);
+   MyAccountPage.getLoginBtn().click();
+   cy.get("ul.woocommerce-error>li").contains("Error: The password you entered for the email address").should("be.visible");
+
   });
 });
